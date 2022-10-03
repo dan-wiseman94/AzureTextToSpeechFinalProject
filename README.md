@@ -1,18 +1,5 @@
 
-### Updating and Refactoring to clean up project
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Updating and Refactoring to clean up project
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
