@@ -1,0 +1,28 @@
+
+body {
+  background-color: darkgreen;
+}
+
+header {
+  text-align: center;
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+main {
+  padding: 3em 1em;
+  margin: auto;
+  line-height: 1.75;
+  font-size: 1.25em;
+}
+.flexContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#startSpeakAsyncButton {
+  flex: 1 0 auto;
+}
