@@ -1,7 +1,20 @@
-import "./TextToSpeechBox.css";
+import "../styling/TextToSpeechBox.css";
 import React, { Component } from "react";
 import Slider, { Range } from "rc-slider";
 import "rc-slider/assets/index.css";
+import styled from "styled-components";
+const Button = styled.button`
+
+  background-color: #252525; 
+  color: white;
+  font-size: 20px;
+  padding: 10px 30px;
+  border-radius: 5px;
+  margin: 10px 0px;
+  cursor: pointer;
+  max-width: 250px;
+  box-shadow 1px 1px 1px black;
+`;
 class TextToSpeechBox extends Component {
   constructor(props) {
     super(props);
@@ -46,6 +59,7 @@ class TextToSpeechBox extends Component {
     this.setState({
       [name]: value,
     });
+    this.props.onSettingChange(e);
   };
   render() {
     // this.RequestAuthorizationToken();

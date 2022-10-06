@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "./Sliders.css";
+import "../styling/Sliders.css";
 
 const Sliders = (props) => {
     return(

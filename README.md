@@ -1,6 +1,17 @@
 
 # Updating and Refactoring to clean up project
 
+# Tools Used
+
+* JavaScript 
+* React, React-Bootstrap
+* Microsoft Azure Cognitive Services (Speech Synthesis)
+* Node.js
+* Styled-Components (CSS)
+* Create-React-App
+  
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
