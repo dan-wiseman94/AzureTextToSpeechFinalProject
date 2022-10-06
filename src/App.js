@@ -1,9 +1,7 @@
 import "./styling/App.css";
 import React, { Component } from "react";
 import styled from "styled-components";
-import azureToken from "./token.php";
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
-
 import TextToSpeechBox from "./components/TextToSpeechBox.js";
 import SettingsMenu from "./components/SettingsMenu.js";
 const Button = styled.button`
@@ -23,64 +21,137 @@ class App extends Component {
     super(props);
     this.state = {
       text: "",
-      settings: {voiceName: "en-US-JennyNeural"},
-      subscription: "",
-      region: ""
+      settings: {
+        voice: "en-US-JennyNeural",
+        subscription: "",
+        region: "",
+        style: "",
+        rate: "+0%",
+      },
     };
   }
   synthesizeSpeech = () => {
-    // const speechConfig = sdk.SpeechConfig.fromSubscription('77b138ab70794c2b8090765c0f884377', 'eastus'); 
-    const speechConfig = sdk.SpeechConfig.fromSubscription(this.state.subscription, this.state.region); 
-    speechConfig.speechSynthesisVoiceName = this.state.settings.voiceName;
+    // const speechConfig = sdk.SpeechConfig.fromSubscription('77b138ab70794c2b8090765c0f884377', 'eastus');
+    const speechConfig = sdk.SpeechConfig.fromSubscription(
+      this.state.settings.subscription,
+      this.state.settings.region
+    );
+    speechConfig.speechSynthesisVoiceName = this.state.settings.voice;
     const synthesizer = new sdk.SpeechSynthesizer(speechConfig);
 
-    synthesizer.speakTextAsync(
-       this.state.text,
-        result => {
-            synthesizer.close();
-            return result.audioData;
-        },
-        error => {
-            console.log(error);
-            synthesizer.close();
-        });
-}
+    let speechSynthesisVoiceName = this.state.settings.voice;
+    var ssml = `<speak version='1.0' xml:lang='en-US' xmlns='http://www.w3.org/2001/10/synthesis' xmlns:mstts='http://www.w3.org/2001/mstts'> \r\n \
+        <voice name='${speechSynthesisVoiceName}' style='${this.state.settings.style}'> \r\n \
+        
+            <mstts:viseme type='redlips_front'/> \r\n \
+            <prosody rate='${this.state.settings.rate}'>
+            '${this.state.text}'
+            </prosody>
+        </voice> \r\n \
+    </speak>`;
 
-  onTextSubmit = (submission) => {
+    // synthesizer.speakTextAsync(
+    //   this.state.text,
+    synthesizer.speakSsmlAsync(
+      ssml,
+      (result) => {
+        synthesizer.close();
+        return result.audioData;
+      },
+      (error) => {
+        console.log(error);
+        synthesizer.close();
+      }
+    );
   };
 
-   onSettingChange = (e) => {
-    // this.setState({
-    //   settings: {},
-    // });
-    // this.setState({
-    //   text: submission.text,
-    //   subscription: submission.subscription,
-    //   region: submission.region
-    // });
+  onTextChange = (e) => {
+    this.setState({
+      text: e.target.value,
+    });
+  };
+
+  onSettingChange = (e) => {
     const target = e.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
-    this.setState({
-      [name]: value,
-    });
-   };
+    this.setState((prevState) => ({
+      settings: {
+        ...prevState.settings,
+
+        [name]: value,
+      },
+    }));
+  };
+  onVoiceChange = (selectedVoice) => {
+    this.setState((prevState) => ({
+      settings: {
+        ...prevState.settings,
+        voice: selectedVoice,
+      },
+    }));
+  };
+
+  onStyleChange = (selectedStyle) => {
+    this.setState((prevState) => ({
+      settings: {
+        ...prevState.settings,
+        style: selectedStyle,
+      },
+    }));
+  };
+  onRateChange = (selectedRate) => {
+    if (selectedRate >= "0" && selectedRate != "") {
+      this.setState((prevState) => ({
+        settings: {
+          ...prevState.settings,
+          rate: "+" + String(selectedRate) + "%",
+        },
+      }));
+    } else if (selectedRate < "0" && selectedRate != "") {
+      this.setState((prevState) => ({
+        settings: {
+          ...prevState.settings,
+          rate: String(selectedRate) + "%",
+        },
+      }));
+    }
+    //reset if empty
+    else if (selectedRate === 0) {
+      this.setState((prevState) => ({
+        settings: {
+          ...prevState.settings,
+          rate: "+0%"
+        },
+      }));
+    }
+  };
+
   render() {
     return (
       <div className="App">
         <header>
-          <h1> Content Authoring Text-To-Speech</h1>
+          <h1> Azure Cognitive Services Text-To-Speech Web GUI</h1>
         </header>
         <main>
           <div className="flexContainer">
-            <SettingsMenu/>
-            <TextToSpeechBox
-              className="textBox"
-              token={azureToken}
-              onTextSubmit={this.onTextSubmit}
-              onSettingChange= {this.onSettingChange}
-            />
-            <Button id="startSpeakTextAsyncButton" onClick={this.synthesizeSpeech}>
+            <div className="setupContainer">
+              <SettingsMenu
+                id="SettingsMenu"
+                onVoiceChange={this.onVoiceChange}
+                onStyleChange={this.onStyleChange}
+                onRateChange={this.onRateChange}
+              />
+              <TextToSpeechBox
+                className="textBox"
+                onTextChange={this.onTextChange}
+                onSettingChange={this.onSettingChange}
+              />
+            </div>
+            <Button
+              id="startSpeakTextAsyncButton"
+              onClick={this.synthesizeSpeech}
+            >
               Start Text to Speech
             </Button>
           </div>

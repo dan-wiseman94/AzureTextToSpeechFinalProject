@@ -104,16 +104,9 @@ class TextToSpeechBox extends Component {
             name="text"
             id="phraseDiv"
             value={this.text}
-            onChange={this.handleChange}
+            onChange={this.props.onTextChange}
           ></textarea>
           <br/>
-        {/* <label htmlFor="slider1">Slider1</label> */}
-        <Slider id="slider1" className="slider"/>
-        <Slider id="slider2" className="slider"/>
-        <Slider id="slider3" className="slider"/>
-        <Slider id="slider4" className="slider"/>
-          {/* <label>Result</label> */}
-          {/* <textarea id="resultDiv"></textarea> */}
         </form>
       </div>
     );

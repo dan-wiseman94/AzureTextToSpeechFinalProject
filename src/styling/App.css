@@ -11,6 +11,7 @@ header {
   align-items: center;
   justify-content: center;
   color: white;
+  box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.2);
 }
 main {
   padding: 3em 1em;
@@ -23,6 +24,16 @@ main {
   flex-direction: column;
   align-items: center;
 }
+.setupContainer {
+  display: flex;
+  flex-direction: row;
+  column-gap: 5px;
+}
 #startSpeakAsyncButton {
   flex: 1 0 auto;
+}
+
+#SettingsMenu {
+  flex: 0.5 0.5 auto;
+
 }
