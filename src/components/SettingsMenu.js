@@ -125,26 +125,7 @@ class SettingsMenu extends Component {
             onChange={this.onRateChange}
           />
         </div>
-        <div className="flexContainer">
-          <label htmlFor="valueSlider">Pitch</label>
-          <Slider
-            value={this.state.pitch}
-            id="valueSlider"
-            className="slider"
-          />
-        </div>
-        <div className="flexContainer">
-          <label htmlFor="slider2">Slider2</label>
-          <Slider id="slider2" className="slider" />
-        </div>
-        <div className="flexContainer">
-          <label htmlFor="slider3">Slider3</label>
-          <Slider id="slider3" className="slider" />
-        </div>
-        <div className="flexContainer">
-          <label htmlFor="slider4">Slider4</label>
-          <Slider id="slider4" className="slider" />
-        </div>
+       
       </div>
     );
   }
