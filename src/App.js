@@ -23,8 +23,8 @@ class App extends Component {
       text: "",
       settings: {
         voice: "en-US-JennyNeural",
-        subscription: "",
-        region: "",
+        subscription: process.env.AZURE_KEY,
+        region: process.env.REGION,
         style: "",
         rate: "+0%",
       },
@@ -138,6 +138,7 @@ class App extends Component {
             <div className="setupContainer">
               <SettingsMenu
                 id="SettingsMenu"
+                className="settingsMenu"
                 onVoiceChange={this.onVoiceChange}
                 onStyleChange={this.onStyleChange}
                 onRateChange={this.onRateChange}
