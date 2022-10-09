@@ -3,13 +3,11 @@
   margin-top: 2%;
   padding: 2ch;
   max-width: 800px;
-  /* flex: 1 0 auto; */
   display: flex;
   flex-direction: column;
-  min-height: 400px;
   border: 1px solid white;
   font-weight: bold;
-  background-color: antiquewhite;
+  background-color: #f0ffff;
   border-radius: 15px;
   box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.2);
   
@@ -17,11 +15,12 @@
 #phraseDiv {
   /* display: inline-block; */
   width: 99%; 
+  border-radius: 5px;
+  height: 300px;
 }
 #resultDiv {
   /* display: inline-block; */
   width: 500px;
-  height: 100px;
 }
 h1 {
   font-weight: 500;
@@ -29,9 +28,7 @@ h1 {
 input {
   margin: 5px;
   border-radius: 5px;
-}
-textarea {
-  border-radius: 5px;
+  height: 80%;
 }
 label {
   font-weight: bold;

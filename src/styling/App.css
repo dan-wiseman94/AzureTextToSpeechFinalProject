@@ -1,6 +1,7 @@
 
 body {
-  background-color: darkgreen;
+  /* background-color:#003153 ; */
+  background-image: url('../images/bg.jpg');
 }
 
 header {
@@ -14,31 +15,26 @@ header {
   box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.2);
 }
 main {
-  padding: 3em 1em;
+  /* padding: 3em 1em; */
   margin: auto;
   line-height: 1.75;
   font-size: 1.25em;
 }
+
 .flexContainer {
   display: flex;
+  margin: 6%;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
+.setupContainer > * {
+  margin: 5px;
+}
 
- @media screen and (max-width: 600px) {
-  .setupContainer {
+@media screen and (min-width: 600px) {
+  .setupContainer{
     display: flex;
-    flex-direction: column;
   }
-
 }
-@media screen and (min-width: 601px) {
-
-  /* .setupContainer {
-    display: flex;
-    flex-direction: row;
-    column-gap: 5px;
-  } */
-
-} 

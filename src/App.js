@@ -10,7 +10,7 @@ const Button = styled.button`
   color: white;
   font-size: 20px;
   padding: 10px 30px;
-  border-radius: 5px;
+  border-radius: 15px;
   margin: 10px 0px;
   cursor: pointer;
   max-width: 250px;
@@ -23,8 +23,8 @@ class App extends Component {
       text: "",
       settings: {
         voice: "en-US-JennyNeural",
-        subscription: process.env.AZURE_KEY,
-        region: process.env.REGION,
+        subscription:"",
+        region: "",
         style: "",
         rate: "+0%",
       },

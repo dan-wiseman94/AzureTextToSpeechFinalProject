@@ -25,26 +25,7 @@ class TextToSpeechBox extends Component {
     };
   }
 
-//   RequestAuthorizationToken = () => {
-//     const authorizationEndpoint = this.props.token;
-//     if (authorizationEndpoint) {
-//       var a = new XMLHttpRequest();
-//       a.open("GET", authorizationEndpoint);
-//       a.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-//       a.send("");
-//       a.onload = function () {
-//         var token = JSON.parse(atob(this.responseText.split(".")[1]));
-//         this.setState({
-
-//             region: token.region
-//         });
-//         let authorizationToken = this.responseText;
-//         // subscriptionKey.disabled = true;
-//         // subscriptionKey.value = "using authorization token (hit F5 to refresh)";
-//         console.log("Got an authorization token: " + token);
-//       };
-//     }
-//   };
+//  
   onSubmitInfo = (e) => {
     e.preventDefault();
     this.props.onTextSubmit(this.state);
@@ -62,11 +43,11 @@ class TextToSpeechBox extends Component {
     this.props.onSettingChange(e);
   };
   render() {
-    // this.RequestAuthorizationToken();
+   
     return (
       <div id="content">
         <form>
-          <label htmlFor="subscriptionKey">
+          {/* <label htmlFor="subscriptionKey">
             <a
               href="https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started"
               target="_blank"
@@ -97,7 +78,7 @@ class TextToSpeechBox extends Component {
             placeholder="YourServiceRegion"
             onChange={this.handleChange}
           />
-          <br/>
+          <br/> */}
           <label htmlFor="phraseDiv">Input Text</label>
 
           <textarea
