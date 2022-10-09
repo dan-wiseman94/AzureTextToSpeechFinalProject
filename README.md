@@ -10,7 +10,10 @@
 * Styled-Components (CSS)
 * Create-React-App
   
-
+TODO:
+ * Authentication
+ * Saving generated files in Database
+ 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
